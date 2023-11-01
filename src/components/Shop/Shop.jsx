@@ -32,11 +32,14 @@ const Shop = () => {
   //TODO - change the bg color of selected item
   //TODO - onchange e current item value reset korte hobe
   //TODO - next preve btn implement
+  //TODO - query er maddome data server e sent page and size
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(
+      `http://localhost:5000/products?page=${currentPage}&size=${itemPerPage}`
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
-  }, []);
+  }, [currentPage, itemPerPage]);
 
   useEffect(() => {
     const storedCart = getShoppingCart();
